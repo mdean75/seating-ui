@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendee-entry.component.css']
 })
 export class AttendeeEntryComponent implements OnInit {
-
+  att: string;
   industries = this.getIndustries();
   isActiveAddIndustry = false;
   constructor() { }

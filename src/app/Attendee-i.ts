@@ -1,4 +1,4 @@
-export interface Attendee {
+export interface AttendeeI {
   id: number;
   name: string;
   business: string;

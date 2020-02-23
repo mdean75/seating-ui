@@ -1,10 +1,10 @@
-import {Attendee} from './Attendee';
+import {AttendeeI} from './Attendee-i';
 import {AttendeeListComponent} from './attendee-list/attendee-list.component';
 import {AppComponent} from './app.component';
 
 const a = new AppComponent();
 
-export const Attendees: Attendee[] = [
+export const Attendees: AttendeeI[] = [
   {
     name:     'Bob Davis',
     id:        a.getRandomInteger(1, 1000),

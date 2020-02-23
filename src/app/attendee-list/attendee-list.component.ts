@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Attendee} from '../Attendee';
+import {AttendeeI} from '../Attendee-i';
 import {Attendees} from '../demo-list';
 
 @Component({
@@ -9,7 +9,7 @@ import {Attendees} from '../demo-list';
 })
 export class AttendeeListComponent implements OnInit {
   attendees = Attendees;
-  att: Attendee[] = [];
+  att: AttendeeI[] = [];
 
 
   constructor() { }
