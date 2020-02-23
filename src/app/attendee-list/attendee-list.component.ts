@@ -8,14 +8,8 @@ import {Attendees} from '../demo-list';
   styleUrls: ['./attendee-list.component.css']
 })
 export class AttendeeListComponent implements OnInit {
-  // attendee: Attendee = {
-  //   name: 'Joe Smith',
-  //   id: this.getRandomInteger(),
-  //   business: 'ABC Cleaning',
-  //   industry: 'Cleaning',
-  //   pairedWith: ['Jane Doe', 'Jerry Seinfeld', 'Mike Elam']
-  // };
   attendees = Attendees;
+  att: Attendee[] = [];
 
 
   constructor() { }
@@ -23,12 +17,4 @@ export class AttendeeListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
-
-function getRandomInt() {
-  let min = 1;
-  let max = 1000;
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
 }
