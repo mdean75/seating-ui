@@ -32,11 +32,31 @@
       <!-- Form -->
       <button class="btn btn-default">Cancel</button>
       <button type="submit" class="btn btn-primary btn-raised">Submit</button>
-      <button class="btn btn-raised btn-warning float-right">Add Industry</button>
+      <button class="btn btn-raised btn-warning float-right" (click)="showDiv()">Add Industry</button>
 
+      <div class="form-group" id="test" style="display: none">
+
+        <input type="text" class="form-control form-control-lg" name="newIndustry" id="newIndustry" placeholder="Enter New Industry" >
+
+        <div class="row form-group mt-5">
+          <input type="button" class="btn btn-primary btn-raised" name="addIndustry" id="addIndustry" value="Add To List" (click)="addIndustry();">
+        </div>
+      </div>
     </mdb-card-body>
 
   </mdb-card>
   <!-- Material form subscription -->
 
 </div>
+<script>
+  $(document).ready(function() {
+    // show the alert
+    setTimeout(function() {
+      $(".alert").alert('close');
+    }, 3000);
+  });
+
+
+
+
+</script>

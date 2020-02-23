@@ -10,12 +10,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AttendeeEntryComponent } from './attendee-entry/attendee-entry.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { AttendeeListComponent } from './attendee-list/attendee-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AttendeeEntryComponent
+    AttendeeEntryComponent,
+    AttendeeListComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { AttendeeEntryComponent } from './attendee-entry/attendee-entry.componen
     MatButtonModule,
     MatSidenavModule,
     MatToolbarModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
