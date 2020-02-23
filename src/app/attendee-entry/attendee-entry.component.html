@@ -24,17 +24,15 @@
           <label for="industry" class="bmd-label-floating">Industry</label>
           <select class="form-control" id="industry">
             <option></option>
-            <option>Finance</option>
-            <option>Banking</option>
-            <option>Government</option>
-            <option>Chamber of Commerce</option>
-            <option>Something else</option>
+            <option *ngFor="let industry of industries">{{ industry }}</option>
+
           </select>
         </div>
       </form>
       <!-- Form -->
       <button class="btn btn-default">Cancel</button>
       <button type="submit" class="btn btn-primary btn-raised">Submit</button>
+      <button class="btn btn-raised btn-warning float-right">Add Industry</button>
 
     </mdb-card-body>
 
