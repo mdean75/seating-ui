@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AttendeeEntryComponent } from './attendee-entry/attendee-entry.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AttendeeListComponent } from './attendee-list/attendee-list.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AttendeeListComponent } from './attendee-list/attendee-list.component';
     MatSidenavModule,
     MatToolbarModule,
     MDBBootstrapModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
