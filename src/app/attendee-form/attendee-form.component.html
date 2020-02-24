@@ -1,0 +1,48 @@
+<!--Card content-->
+<div class="container mt-5">
+  <mdb-card>
+    <mdb-card-header class="info-color white-text text-center py-4">
+      <h1>
+        <strong>Morning Schmooze Pair Up</strong>
+      </h1>
+    </mdb-card-header>
+    <mdb-card-body class="px-lg-5">
+
+      <!-- Form -->
+      <form #f="ngForm"  (ngSubmit)="onSubmit(f);" novalidate>
+        <div class="form-group bmd-form-group"> <!-- left unspecified, .bmd-form-group will be automatically added (inspect the code) -->
+          <label for="name" class="bmd-label-floating">Name</label>
+          <input type="text" class="form-control" id="name"  [(ngModel)]="model.name" name="name">
+        </div>
+        <div class="form-group bmd-form-group"> <!-- manually specified -->
+          <label for="businessName" class="bmd-label-floating">Business Name</label>
+          <input type="text" class="form-control" id="business" [(ngModel)]="model.business" name="business">
+        </div>
+        <div class="bmd-form-group"> <!-- manually specified -->
+          <label for="industry" class="bmd-label-floating">Industry</label>
+          <select class="form-control" id="industry" [(ngModel)]="model.industry" name="industry">
+            <option></option>
+            <option *ngFor="let industry of industries" [value]="industry">{{ industry }}</option>
+
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-raised mt-5">Submit me</button>
+
+      </form>
+      <!-- Form -->
+      <button class="btn btn-default">Cancel</button>
+      <button class="btn btn-raised btn-warning float-right" (click)="showDiv()">Add Industry</button>
+
+
+      <div class="form-group" id="test" style="display: none">
+
+        <input type="text" class="form-control form-control-lg" name="newIndustry" id="newIndustry" placeholder="Enter New Industry" >
+
+        <div class="row form-group mt-5">
+          <input type="button" class="btn btn-primary btn-raised" name="addIndustry" id="addIndustry" value="Add To List" (click)="addIndustry();">
+        </div>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+</div>

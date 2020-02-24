@@ -1,5 +1,6 @@
 import {Component, NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {Attendee} from './attendee';
 
 
 @Component({
@@ -8,6 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public static atts: Attendee[] = [];
   title = 'OCOC Morning Schmooze Pair Up';
 
   public getRandomInteger(min, max) {
