@@ -3,32 +3,62 @@ import {AttendeeEntryComponent} from '../attendee-entry/attendee-entry.component
 import {Attendee} from '../attendee';
 import { FormGroup, NgForm} from '@angular/forms';
 import {AppComponent} from '../app.component';
+import {AttendeeService} from '../attendee.service';
+import {TestI} from '../testI';
+import {HttpClient} from '@angular/common/http';
 
 
 
 @Component({
   selector: 'app-attendee-form',
   templateUrl: './attendee-form.component.html',
-  styleUrls: ['./attendee-form.component.css']
+  styleUrls: ['./attendee-form.component.css'],
+  providers: []
 })
 export class AttendeeFormComponent implements OnInit {
-  constructor() { }
-  private static atts: Attendee[] = [];
+  constructor(private http: HttpClient) {}
 
+  totalAngularPackages;
+  test: TestI;
+  userid: number;
+  id: number;
+  title: string;
+  atts: Attendee[];
+  // as: AttendeeService;
   // attendeeForm: FormGroup;
   industries = getIndustries();
-  model = new Attendee(1, 'John Doe', 'ABC Cleaning', 'Cleaning');
+  model: Attendee = new Attendee(1, 'Joe', 'ABC', 'teest');
   submitted = false;
   isActiveAddIndustry = false;
+
+  // addAttendee(att) {
+  //   this.as.addAttendee(att);
+  // }
+
+  // getChildren() {
+  //   this.as.getChildren().subscribe(data => this.test = {id: (data as any) });
+  // }
+
   onSubmit(f: NgForm) {
     console.log('submitted form');
     let attendee = new Attendee(this.getRandomInteger(1, 1000), this.model.name, this.model.business, this.model.industry);
-    AppComponent.atts.push(attendee);
-    console.log(AppComponent.atts);
+    // AppComponent.atts.push(attendee);
+    // this.atts.push(attendee);
+    // this.addAttendee(attendee);
+    // this.as.attendeeArray.push(attendee);
+    // console.log(this.as.getAttendees());
     f.form.setValue({name: '', business: '', industry: ''});
+
+    // this.as.getChildren().subscribe((data: TestI) => this.test = { ...data} );
+    // this.getChildren();
+    console.log(this.totalAngularPackages);
   }
 
   ngOnInit(): void {
+    this.http.get<any>('https://api.npms.io/v2/search?q=scope:angular').subscribe(data => {
+      this.totalAngularPackages = data.total;
+    });
+
   }
 
   public getRandomInteger(min, max) {

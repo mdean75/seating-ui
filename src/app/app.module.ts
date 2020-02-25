@@ -15,6 +15,9 @@ import { AttendeeListComponent } from './attendee-list/attendee-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import { AttendeeFormComponent } from './attendee-form/attendee-form.component';
+import {AttendeeService} from './attendee.service';
+import { PairingComponent } from './pairing/pairing.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -22,7 +25,8 @@ import { AttendeeFormComponent } from './attendee-form/attendee-form.component';
     AppComponent,
     AttendeeEntryComponent,
     AttendeeListComponent,
-    AttendeeFormComponent
+    AttendeeFormComponent,
+    PairingComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +38,10 @@ import { AttendeeFormComponent } from './attendee-form/attendee-form.component';
     MDBBootstrapModule,
     FlexLayoutModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AttendeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
