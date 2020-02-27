@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import {Attendee} from './attendee';
 import {HttpClient} from '@angular/common/http';
 import {TestI} from './testI';
+import {Observable} from 'rxjs';
+import {AttendeeI} from './Attendee-i';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AttendeeService {
   attendeeArray = [];
 
@@ -14,11 +14,11 @@ export class AttendeeService {
   }
 
   getChildren() {
-    return this.http.get<TestI>('https://jsonplaceholder.typicode.com/todos/1');
+    return this.http.get<TestI>('https://seating.bedaring.me/api/attendees');
   }
 
-  getAttendees() {
-    return this.attendeeArray;
+  public  getAttendees(): Observable<Attendee[]> {
+    return this.http.get<Attendee[]>('http://localhost:3000/api/attendees');
   }
 
   addAttendee(att) {
