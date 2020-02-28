@@ -18,7 +18,7 @@ export class AttendeeService {
   }
 
   public  getAttendees(): Observable<Attendee[]> {
-    return this.http.get<Attendee[]>('http://localhost:3000/api/attendees');
+    return this.http.get<Attendee[]>('https://seating.bedaring.me/api/attendees');
   }
 
   addAttendee(att) {

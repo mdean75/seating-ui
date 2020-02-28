@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AttendeeI} from '../Attendee-i';
-import {Attendees} from '../demo-list';
+// import {Attendees} from '../demo-list';
 import {HttpClient} from '@angular/common/http';
 import {Attendee} from '../attendee';
 import {AttendeeService} from '../attendee.service';
