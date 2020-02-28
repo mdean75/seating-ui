@@ -61,7 +61,7 @@ export class AttendeeListComponent implements OnInit {
       });
       const d = data as Attendee[];
       for (const value of d) {
-        console.log(value);   //10 20 30
+        console.log(value);
         // const v = new Attendee(value.id, value.name, value.business, value.industry);
         this.attendees.push(value);
       }

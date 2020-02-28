@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {TestI} from './testI';
 import {Observable} from 'rxjs';
 import {AttendeeI} from './Attendee-i';
+import {Pair} from './pair';
 
 @Injectable()
 export class AttendeeService {
@@ -19,6 +20,14 @@ export class AttendeeService {
 
   public  getAttendees(): Observable<Attendee[]> {
     return this.http.get<Attendee[]>('https://seating.bedaring.me/api/attendees');
+  }
+
+  public getPairingList(): Observable<Pair[]> {
+    return this.http.get<Pair[]>('https://seating.bedaring.me/api/seating');
+  }
+
+  public getListcount(): Observable<any> {
+    return this.http.get<any>('https://seating.bedaring.me/api/count');
   }
 
   addAttendee(att) {
