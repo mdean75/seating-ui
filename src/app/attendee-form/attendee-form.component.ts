@@ -16,8 +16,12 @@ import {HttpClient} from '@angular/common/http';
   providers: []
 })
 export class AttendeeFormComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(attservice: AttendeeService) {
+    this.attService = attservice;
+  }
 
+  test1;
+  attService;
   totalAngularPackages: Attendee[];
   test: TestI;
   userid: number;
@@ -50,18 +54,27 @@ export class AttendeeFormComponent implements OnInit {
     // console.log(this.as.getAttendees());
     f.form.setValue({name: '', business: '', industry: ''});
 
+    this.attService.addAttendee(attendee).subscribe(data => {
+      this.test1 = data;
+    });
+    // this.attService.getAppData().subscribe(data => {
+    //   this.totalAngularPackages = data;
+    // });
     // this.as.getChildren().subscribe((data: TestI) => this.test = { ...data} );
     // this.getChildren();
-    this.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
-      this.totalAngularPackages = data.Attendees;
-    });
+    // getChildrenthis.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
+    //   this.totalAngularPackages = data.Attendees;
+    // });
     console.log(this.totalAngularPackages);
   }
 
   ngOnInit(): void {
-    this.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
+    this.attService.getAppData().subscribe(data => {
       this.totalAngularPackages = data;
     });
+    // this.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
+    //   this.totalAngularPackages = data;
+    // });
 
     // this.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
     //   this.totalAngularPackages = data.Attendees;

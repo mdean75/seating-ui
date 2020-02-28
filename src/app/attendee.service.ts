@@ -29,6 +29,13 @@ export class AttendeeService {
       );
   }
 
+  public  getAppData(): Observable<any> {
+    return this.http.get<any>('https://seating.bedaring.me/api/appdata')
+      .pipe(
+        retry(5)
+      );
+  }
+
   public getPairingList(): Observable<Pair[]> {
     return this.http.get<Pair[]>('https://seating.bedaring.me/api/seating')
       .pipe(
@@ -50,8 +57,11 @@ export class AttendeeService {
       );
   }
 
-  addAttendee(att) {
-    this.attendeeArray.push(att);
+  public addAttendee(attendee: Attendee) {
+    return this.http.post<Attendee>('https://seating.bedaring.me/api/attendee', attendee)
+      .pipe(
+        retry(3)
+      );
   }
 
   // clearAttendees() {
