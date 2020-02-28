@@ -58,10 +58,10 @@ export class AttendeeService {
   }
 
   public addAttendee(attendee: Attendee) {
-    return this.http.post<Attendee>('https://seating.bedaring.me/api/attendee', attendee)
-      .pipe(
-        retry(3)
-      );
+    return this.http.get<Attendee>('https://seating.bedaring.me/api/attendee?name=' + attendee.name + '&business=' + attendee.business +
+      '&industry=' + attendee.industry )
+      .pipe();
+
   }
 
   // clearAttendees() {
