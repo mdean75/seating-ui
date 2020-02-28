@@ -43,12 +43,19 @@ export class AttendeeService {
       );
   }
 
+  public clearAttendees() {
+    return this.http.get('https://seating.bedaring.me/api/reset')
+      .pipe(
+        retry(5)
+      );
+  }
+
   addAttendee(att) {
     this.attendeeArray.push(att);
   }
 
-  clearAttendees() {
-    this.attendeeArray = [];
-    return this.attendeeArray;
-  }
+  // clearAttendees() {
+  //   this.attendeeArray = [];
+  //   return this.attendeeArray;
+  // }
 }
