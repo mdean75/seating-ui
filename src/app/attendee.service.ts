@@ -5,6 +5,7 @@ import {TestI} from './testI';
 import {Observable} from 'rxjs';
 import {AttendeeI} from './Attendee-i';
 import {Pair} from './pair';
+import {catchError, retry} from 'rxjs/operators';
 
 @Injectable()
 export class AttendeeService {
@@ -15,19 +16,31 @@ export class AttendeeService {
   }
 
   getChildren() {
-    return this.http.get<TestI>('https://seating.bedaring.me/api/attendees');
+    return this.http.get<TestI>('https://seating.bedaring.me/api/attendees')
+      .pipe(
+        retry(5)
+      );
   }
 
   public  getAttendees(): Observable<Attendee[]> {
-    return this.http.get<Attendee[]>('https://seating.bedaring.me/api/attendees');
+    return this.http.get<Attendee[]>('https://seating.bedaring.me/api/attendees')
+      .pipe(
+        retry(5)
+      );
   }
 
   public getPairingList(): Observable<Pair[]> {
-    return this.http.get<Pair[]>('https://seating.bedaring.me/api/seating');
+    return this.http.get<Pair[]>('https://seating.bedaring.me/api/seating')
+      .pipe(
+        retry(5)
+      );
   }
 
   public getListcount(): Observable<any> {
-    return this.http.get<any>('https://seating.bedaring.me/api/count');
+    return this.http.get<any>('https://seating.bedaring.me/api/count')
+      .pipe(
+        retry(5)
+      );
   }
 
   addAttendee(att) {
