@@ -1,8 +1,12 @@
 <mat-toolbar color="primary">
-  <mat-icon>home</mat-icon>
+    <button mat-button routerLink="/reset">
+        <mat-icon>home</mat-icon>
+    </button>
+
   <button mat-button routerLink="/">
 
-    <span class="d-none d-sm-block">{{title}}</span></button>
+    <span class="d-none d-sm-block">{{title}}</span>
+  </button>
 
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>

@@ -3,7 +3,7 @@
     <mdb-card-header class="info-color white-text text-center py-4">
       <h1>
         <strong>Morning Schmooze Pair Up</strong>
-        <p class="mt-4">Matchup # 1</p>
+        <p class="mt-4">Matchup # {{ count }}</p>
       </h1>
     </mdb-card-header>
     <mdb-card-body class="px-lg-5">
@@ -12,20 +12,10 @@
 
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Bob Davis (Office Equipment & Copiers) </td>
-          <td>Nicolas Ippolito (Accountants & Tax Preparation)</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
+        <tr *ngFor="let pair of pairs; index as i;">
+          <th scope="row"> {{ i+1 }}</th>
+          <td>{{ pair.seat1.name }} </td>
+          <td>{{ pair.seat2.name }}</td>
         </tr>
         </tbody>
       </table>

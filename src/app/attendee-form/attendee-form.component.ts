@@ -16,9 +16,13 @@ import {HttpClient} from '@angular/common/http';
   providers: []
 })
 export class AttendeeFormComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(attservice: AttendeeService) {
+    this.attService = attservice;
+  }
 
-  totalAngularPackages;
+  test1;
+  attService;
+  totalAngularPackages: Attendee[];
   test: TestI;
   userid: number;
   id: number;
@@ -27,7 +31,8 @@ export class AttendeeFormComponent implements OnInit {
   // as: AttendeeService;
   // attendeeForm: FormGroup;
   industries = getIndustries();
-  model: Attendee = new Attendee(1, 'Joe', 'ABC', 'teest');
+  model: Attendee = new Attendee(0, '', '', '');
+  // model: Attendee;
   submitted = false;
   isActiveAddIndustry = false;
 
@@ -41,7 +46,7 @@ export class AttendeeFormComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     console.log('submitted form');
-    let attendee = new Attendee(this.getRandomInteger(1, 1000), this.model.name, this.model.business, this.model.industry);
+    const attendee = new Attendee(this.getRandomInteger(1, 1000), this.model.name, this.model.business, this.model.industry);
     // AppComponent.atts.push(attendee);
     // this.atts.push(attendee);
     // this.addAttendee(attendee);
@@ -49,16 +54,32 @@ export class AttendeeFormComponent implements OnInit {
     // console.log(this.as.getAttendees());
     f.form.setValue({name: '', business: '', industry: ''});
 
+    this.attService.addAttendee(attendee).subscribe(data => {
+      this.test1 = data;
+    });
+    // this.attService.getAppData().subscribe(data => {
+    //   this.totalAngularPackages = data;
+    // });
     // this.as.getChildren().subscribe((data: TestI) => this.test = { ...data} );
     // this.getChildren();
+    // getChildrenthis.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
+    //   this.totalAngularPackages = data.Attendees;
+    // });
     console.log(this.totalAngularPackages);
   }
 
   ngOnInit(): void {
-    this.http.get<any>('https://api.npms.io/v2/search?q=scope:angular').subscribe(data => {
-      this.totalAngularPackages = data.total;
+    this.attService.getAppData().subscribe(data => {
+      this.totalAngularPackages = data;
     });
+    // this.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
+    //   this.totalAngularPackages = data;
+    // });
 
+    // this.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
+    //   this.totalAngularPackages = data.Attendees;
+    // });
+    console.log(this.totalAngularPackages);
   }
 
   public getRandomInteger(min, max) {

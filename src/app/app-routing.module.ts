@@ -6,19 +6,20 @@ import {AttendeeEntryComponent} from './attendee-entry/attendee-entry.component'
 import {AttendeeListComponent} from './attendee-list/attendee-list.component';
 import {AppComponent} from './app.component';
 import {PairingComponent} from './pairing/pairing.component';
+import {ResetAttendeesComponent} from './reset-attendees/reset-attendees.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: AttendeeEntryComponent},
   {path: 'alist', component: AttendeeListComponent},
-  {path: 'pairing', component: PairingComponent}
+  {path: 'pairing', component: PairingComponent},
+  {path: 'reset', component: ResetAttendeesComponent}
 ];
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forRoot(appRoutes),
-    CommonModule
-  ],
+  imports: [RouterModule.forRoot(appRoutes, {
+    onSameUrlNavigation: 'reload'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

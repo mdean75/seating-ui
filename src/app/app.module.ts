@@ -18,6 +18,7 @@ import { AttendeeFormComponent } from './attendee-form/attendee-form.component';
 import {AttendeeService} from './attendee.service';
 import { PairingComponent } from './pairing/pairing.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ResetAttendeesComponent } from './reset-attendees/reset-attendees.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {HttpClientModule} from '@angular/common/http';
     AttendeeEntryComponent,
     AttendeeListComponent,
     AttendeeFormComponent,
-    PairingComponent
+    PairingComponent,
+    ResetAttendeesComponent
   ],
   imports: [
     BrowserModule,

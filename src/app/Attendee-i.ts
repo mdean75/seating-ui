@@ -3,5 +3,6 @@ export interface AttendeeI {
   name: string;
   business: string;
   industry: string;
-  pairedWith: string[];
+  pairedWith: number[];
+  pairedWithName: string[];
 }
