@@ -11,14 +11,16 @@ export class ResetAttendeesComponent implements OnInit {
   attService;
   test;
   router;
-  constructor(attService: AttendeeService, router: Router) {this.attService = attService; this.router = router;}
+  constructor(attService: AttendeeService, router: Router) {this.attService = attService; this.router = router; }
 
   ngOnInit(): void {
-    this.attService.clearAttendees().subscribe(data => {
-      this.test = data;
-    });
-    alert('Meeting Attendees Reset');
-    this.router.navigate(['/']);
+    const r = confirm('Clear meeting attendees?');
+    if (r) {
+      this.attService.clearAttendees().subscribe(data => {
+        this.test = data;
+      });
+      this.router.navigate(['/']);
+    }
   }
 
 }

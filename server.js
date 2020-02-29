@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-app.use(express.static('dist/PROJECT-NAME'));
+app.use(express.static('dist/seating-a'));
 app.get('/', function (req, res,next) {
   res.redirect('/');
 });

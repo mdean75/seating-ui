@@ -1,22 +1,42 @@
+<div >
 <mat-toolbar color="primary">
-    <button mat-button routerLink="/reset">
-        <mat-icon>home</mat-icon>
+  <div fxShow="true" fxHide.gt-sm="true">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
     </button>
+  </div>
+
+  <button mat-button routerLink="/reset">
+    <mat-icon>clear</mat-icon>
+  </button>
 
   <button mat-button routerLink="/">
-
     <span class="d-none d-sm-block">{{title}}</span>
   </button>
 
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
-<div fxLayout="row" fxShow="false" fxShow.gt-sm>
+
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button mat-button routerLink="/alist">Attendees</button>
     <button mat-button routerLink="/pairing">Pairing List</button>
   </div>
 
-
 </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="side" opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
 
-<router-outlet></router-outlet>
+        <button mat-button routerLink="/alist">Attendees</button>
+        <button mat-button routerLink="/pairing">Pairing List</button>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+</div>
 

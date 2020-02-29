@@ -7,10 +7,11 @@ import {AttendeeListComponent} from './attendee-list/attendee-list.component';
 import {AppComponent} from './app.component';
 import {PairingComponent} from './pairing/pairing.component';
 import {ResetAttendeesComponent} from './reset-attendees/reset-attendees.component';
+import {AttendeeFormComponent} from './attendee-form/attendee-form.component';
 
 
 const appRoutes: Routes = [
-  {path: '', component: AttendeeEntryComponent},
+  {path: '', component: AttendeeFormComponent},
   {path: 'alist', component: AttendeeListComponent},
   {path: 'pairing', component: PairingComponent},
   {path: 'reset', component: ResetAttendeesComponent}
