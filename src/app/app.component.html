@@ -6,9 +6,7 @@
     </button>
   </div>
 
-  <button mat-button routerLink="/reset">
-    <mat-icon>clear</mat-icon>
-  </button>
+
 
   <button mat-button routerLink="/">
     <span class="d-none d-sm-block">{{title}}</span>
@@ -20,13 +18,17 @@
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button mat-button routerLink="/alist">Attendees</button>
     <button mat-button routerLink="/pairing">Pairing List</button>
+
   </div>
+  <button mat-button routerLink="/reset">
+    <mat-icon>delete_outline</mat-icon>
+  </button>
 
 </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="example-container">
     <mat-sidenav color="primary" #sidenav fxLayout="column" mode="side" opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
-
+        <button mat-button routerLink="/">Home</button>
         <button mat-button routerLink="/alist">Attendees</button>
         <button mat-button routerLink="/pairing">Pairing List</button>
       </div>

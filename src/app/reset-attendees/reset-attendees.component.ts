@@ -19,8 +19,8 @@ export class ResetAttendeesComponent implements OnInit {
       this.attService.clearAttendees().subscribe(data => {
         this.test = data;
       });
-      this.router.navigate(['/']);
     }
+    this.router.navigate(['/']);
   }
 
 }
