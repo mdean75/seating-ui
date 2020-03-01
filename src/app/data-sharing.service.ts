@@ -5,6 +5,7 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class DataSharingService {
+  // this will need to be worked on
   public listCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   constructor() { }
 }
