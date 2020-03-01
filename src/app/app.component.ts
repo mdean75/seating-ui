@@ -1,7 +1,9 @@
-import {Component, NgModule} from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {Attendee} from './attendee';
 import {AttendeeService} from './attendee.service';
+import {Pair} from './pair';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -9,12 +11,14 @@ import {AttendeeService} from './attendee.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public static atts: Attendee[] = [];
   title = 'OCOC Morning Schmooze Pair Up';
   attService;
   test;
-  constructor(attService: AttendeeService) {this.attService = attService; }
+  count;
+  router;
+  constructor(attService: AttendeeService, router: Router) {this.attService = attService; this.router = router; }
   public getRandomInteger(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -23,6 +27,13 @@ export class AppComponent {
   reset() {
     this.attService.clearAttendees().subscribe(data => {
       this.test = data.valueOf();
+    });
+  }
+
+  ngOnInit(): void {
+    this.router.navigate(['']);
+    this.attService.getListcount().subscribe(data => {
+      this.count = data.valueOf('ListCount');
     });
   }
 }

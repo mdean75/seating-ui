@@ -19,6 +19,7 @@ import {AttendeeService} from './attendee.service';
 import { PairingComponent } from './pairing/pairing.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ResetAttendeesComponent } from './reset-attendees/reset-attendees.component';
+import {DataSharingService} from './data-sharing.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { ResetAttendeesComponent } from './reset-attendees/reset-attendees.compo
     FormsModule,
     HttpClientModule
   ],
-  providers: [AttendeeService],
+  providers: [AttendeeService, DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
