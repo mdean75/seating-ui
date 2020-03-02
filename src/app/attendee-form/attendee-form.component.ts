@@ -19,7 +19,7 @@ export class AttendeeFormComponent implements OnInit {
   constructor(attservice: AttendeeService) {
     this.attService = attservice;
   }
-
+  test2;
   test1;
   attService;
   totalAngularPackages: Attendee[];
@@ -98,6 +98,12 @@ export class AttendeeFormComponent implements OnInit {
     }
   }
 
+  initDemo() {
+    console.log('initDemo()');
+    this.attService.loadDemo().subscribe(data => {
+      this.test2 = data;
+    });
+  }
   addIndustry() {
     const i = document.getElementById('newIndustry') as HTMLInputElement;
     const list = document.getElementById('industry') as HTMLSelectElement;

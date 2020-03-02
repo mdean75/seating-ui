@@ -57,6 +57,14 @@ export class AttendeeService {
       );
   }
 
+  public loadDemo() {
+    console.log('service: loadDemo');
+    return this.http.get('https://seating.bedaring.me/api/demo')
+      .pipe(
+        retry(5)
+      );
+  }
+
   public addAttendee(attendee: Attendee) {
     return this.http.get<Attendee>('https://seating.bedaring.me/api/attendee?name=' + attendee.name + '&business=' + attendee.business +
       '&industry=' + attendee.industry )
