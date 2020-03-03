@@ -19,7 +19,9 @@ export class AppComponent implements OnInit {
   count;
   router;
   test2;
-  constructor(attService: AttendeeService, router: Router) {this.attService = attService; this.router = router; }
+  constructor(attService: AttendeeService, router: Router) {
+    this.attService = attService; this.router = router; this.router.navigate(['']);
+  }
   public getRandomInteger(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
