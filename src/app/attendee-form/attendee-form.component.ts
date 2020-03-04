@@ -1,11 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {AttendeeEntryComponent} from '../attendee-entry/attendee-entry.component';
+import {Component, OnInit} from '@angular/core';
 import {Attendee} from '../attendee';
-import { FormGroup, NgForm} from '@angular/forms';
-import {AppComponent} from '../app.component';
+import { NgForm} from '@angular/forms';
 import {AttendeeService} from '../attendee.service';
-import {TestI} from '../testI';
-import {HttpClient} from '@angular/common/http';
+import {NavigationEnd, Router } from '@angular/router';
 
 
 
@@ -16,69 +13,45 @@ import {HttpClient} from '@angular/common/http';
   providers: []
 })
 export class AttendeeFormComponent implements OnInit {
-  constructor(attservice: AttendeeService) {
+  constructor(attservice: AttendeeService, router: Router) {
     this.attService = attservice;
+    this.router = router;
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.clearForm();
+      }
+    });
   }
+  navigationSubscription;
+  router;
   test2;
   test1;
   attService;
   totalAngularPackages: Attendee[];
-  test: TestI;
-  userid: number;
-  id: number;
-  title: string;
-  atts: Attendee[];
-  // as: AttendeeService;
-  // attendeeForm: FormGroup;
+
   industries = getIndustries();
   model: Attendee = new Attendee(0, '', '', '');
-  // model: Attendee;
-  submitted = false;
+
   isActiveAddIndustry = false;
-
-  // addAttendee(att) {
-  //   this.as.addAttendee(att);
-  // }
-
-  // getChildren() {
-  //   this.as.getChildren().subscribe(data => this.test = {id: (data as any) });
-  // }
 
   onSubmit(f: NgForm) {
     console.log('submitted form');
     const attendee = new Attendee(this.getRandomInteger(1, 1000), this.model.name, this.model.business, this.model.industry);
-    // AppComponent.atts.push(attendee);
-    // this.atts.push(attendee);
-    // this.addAttendee(attendee);
-    // this.as.attendeeArray.push(attendee);
-    // console.log(this.as.getAttendees());
-    f.form.setValue({name: '', business: '', industry: ''});
+    this.clearForm();
 
     this.attService.addAttendee(attendee).subscribe(data => {
       this.test1 = data;
     });
-    // this.attService.getAppData().subscribe(data => {
-    //   this.totalAngularPackages = data;
-    // });
-    // this.as.getChildren().subscribe((data: TestI) => this.test = { ...data} );
-    // this.getChildren();
-    // getChildrenthis.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
-    //   this.totalAngularPackages = data.Attendees;
-    // });
     console.log(this.totalAngularPackages);
   }
 
+  clearForm() {
+    this.model = new Attendee(0, '', '', '');
+  }
   ngOnInit(): void {
     this.attService.getAppData().subscribe(data => {
       this.totalAngularPackages = data;
     });
-    // this.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
-    //   this.totalAngularPackages = data;
-    // });
-
-    // this.http.get<any>('https://seating.bedaring.me/api/appdata').subscribe(data => {
-    //   this.totalAngularPackages = data.Attendees;
-    // });
     console.log(this.totalAngularPackages);
   }
 

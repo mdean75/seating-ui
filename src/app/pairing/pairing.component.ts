@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AttendeeService} from '../attendee.service';
 import {Pair} from '../pair';
+import {DataSharingService} from '../data-sharing.service';
 
 @Component({
   selector: 'app-pairing',
@@ -11,8 +12,10 @@ export class PairingComponent implements OnInit {
   count;
   pairs = new Array<Pair>();
   attService;
-  constructor(attService: AttendeeService) {
+  dataSharing;
+  constructor(attService: AttendeeService, dataSharing: DataSharingService) {
     this.attService = attService;
+    this.dataSharing  = dataSharing;
   }
 
   ngOnInit(): void {
@@ -28,6 +31,8 @@ export class PairingComponent implements OnInit {
     this.attService.getListcount().subscribe(data => {
       this.count = data.valueOf('ListCount');
     });
+    console.log(this.count);
+    this.dataSharing.updateCountFn(this.count);
   }
 
 }
