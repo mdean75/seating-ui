@@ -11,7 +11,7 @@ import {AttendeeFormComponent} from './attendee-form/attendee-form.component';
 
 
 const appRoutes: Routes = [
-  {path: '', component: AttendeeFormComponent},
+  {path: '', component: AttendeeFormComponent, runGuardsAndResolvers: 'always'},
   {path: 'alist', component: AttendeeListComponent},
   {path: 'pairing', component: PairingComponent},
   {path: 'reset', component: ResetAttendeesComponent}
