@@ -3,6 +3,7 @@ import {Attendee} from '../attendee';
 import { NgForm} from '@angular/forms';
 import {AttendeeService} from '../attendee.service';
 import {NavigationEnd, Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 
@@ -13,7 +14,7 @@ import {NavigationEnd, Router } from '@angular/router';
   providers: []
 })
 export class AttendeeFormComponent implements OnInit {
-  constructor(attservice: AttendeeService, router: Router) {
+  constructor(attservice: AttendeeService, router: Router, public sb: MatSnackBar) {
     this.attService = attservice;
     this.router = router;
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -34,6 +35,11 @@ export class AttendeeFormComponent implements OnInit {
 
   isActiveAddIndustry = false;
 
+  openSnackBar(message: string, action: string) {
+    this.sb.open(message, action, {
+      duration: 2000,
+    });
+  }
   onSubmit(f: NgForm) {
     console.log('submitted form');
     const attendee = new Attendee(this.getRandomInteger(1, 1000), this.model.name, this.model.business, this.model.industry);
@@ -43,6 +49,7 @@ export class AttendeeFormComponent implements OnInit {
       this.test1 = data;
     });
     console.log(this.totalAngularPackages);
+    this.openSnackBar('Successfully added meeting attendee', 'add');
   }
 
   clearForm() {
