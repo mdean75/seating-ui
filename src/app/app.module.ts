@@ -20,6 +20,7 @@ import { PairingComponent } from './pairing/pairing.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ResetAttendeesComponent } from './reset-attendees/reset-attendees.component';
 import {DataSharingService} from './data-sharing.service';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {DataSharingService} from './data-sharing.service';
     FlexLayoutModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [AttendeeService, DataSharingService],
   bootstrap: [AppComponent]
