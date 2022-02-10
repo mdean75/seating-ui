@@ -8,7 +8,9 @@
 
 
 
+  <img src="favicon.ico" height="30px">
   <button mat-button routerLink="/">
+
     <span class="d-none d-sm-block">{{title}}</span>
   </button>
 
@@ -17,12 +19,15 @@
 
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button mat-button routerLink="/alist">Attendees</button>
-    <button mat-button routerLink="/pairing">Pairing List </button>
+    <button mat-button routerLink="/attendee-list">View Attendees</button>
+    <button mat-button routerLink="/pairing">Pairing List</button>
+    <button mat-button routerLink="/start">Create New Event</button>
+    <button mat-button routerLink="/attendee">New Attendee Entry</button>
 <!--    <button mat-button (click)="initDemo()">Demo</button>-->
 
   </div>
-  <button mat-button routerLink="/reset">
-    <mat-icon>delete_outline</mat-icon>
+  <button mat-button >
+    <mat-icon (click)="initDemo()">delete_outline</mat-icon>
   </button>
 
 </mat-toolbar>
@@ -31,7 +36,11 @@
       <div fxLayout="column">
         <button mat-button routerLink="/">Home</button>
         <button mat-button routerLink="/alist">Attendees</button>
-        <button mat-button routerLink="/pairing">Pairing List </button>
+        <button mat-button routerLink="/attendee-list">View Attendees</button>
+        <button mat-button routerLink="/start">Create New Event</button>
+        <button mat-button routerLink="/attendee">New Attendee Entry</button>
+
+        <button mat-button routerLink="/pairing">Pairing List</button>
 <!--        <button mat-button (click)="initDemo()">Demo</button>-->
       </div>
     </mat-sidenav>

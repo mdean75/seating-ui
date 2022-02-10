@@ -54,11 +54,11 @@ export class AttendeeListComponent implements OnInit {
     // });
     // console.log(this.attendees);
     this.attService.getAttendees().subscribe(data => {
-      this.attendees1 = data.map(item => {
-        return new Attendee(
-          item.id, item.name, item.business, item.industry, item.pairedWith, item.pairedWithame
-        );
-      });
+      // this.attendees1 = data.map(item => {
+      //   return new Attendee(
+      //     item.id, item.name, item.business, item.industry, item.pairedWith, item.pairedWithame
+      //   );
+      // });
       const d = data as Attendee[];
       for (const value of d) {
         console.log(value);
