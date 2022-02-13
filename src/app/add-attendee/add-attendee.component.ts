@@ -4,19 +4,20 @@ import { NgForm} from '@angular/forms';
 import {AttendeeService} from '../attendee.service';
 import {NavigationEnd, Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
-
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {GroupEvent} from '../start-event/start-event.component';
 
 @Component({
-  selector: 'app-attendee-form',
-  templateUrl: './attendee-form.component.html',
-  styleUrls: ['./attendee-form.component.css'],
-  providers: []
+  selector: 'app-add-attendee',
+  templateUrl: './add-attendee.component.html',
+  styleUrls: ['./add-attendee.component.css']
 })
-export class AttendeeFormComponent implements OnInit {
+export class AddAttendeeComponent implements OnInit {
+
   eventId = '';
 
-  constructor(attservice: AttendeeService, router: Router, public sb: MatSnackBar) {
+  constructor(attservice: AttendeeService, router: Router, public sb: MatSnackBar, public http: HttpClient) {
     this.attService = attservice;
     this.router = router;
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -44,13 +45,26 @@ export class AttendeeFormComponent implements OnInit {
   }
   onSubmit(f: NgForm) {
     console.log('submitted form');
-    const attendee = new Attendee(this.getRandomInteger(1, 1000), this.model.name, this.model.business, this.model.industry);
+    // const attendee = new Attendee(this.getRandomInteger(1, 1000), this.model.name, this.model.business, this.model.industry);
+
+    const attendee: DBAttendee = {
+      id: '',
+      name: this.model.name,
+      companyName: this.model.business,
+      industry: this.model.industry,
+    };
+    const eventId = localStorage.getItem('event');
+    this.http.post(`${environment.seatingAPI}/event/${eventId}/attendee`, attendee).subscribe(resp => {
+      console.log(`added attendee: ${resp}`);
+    });
+
     this.clearForm();
 
-    this.attService.addAttendee(attendee).subscribe(data => {
-      this.test1 = data;
-    });
-    console.log(this.totalAngularPackages);
+
+    // this.attService.addAttendee(attendee).subscribe(data => {
+    //   this.test1 = data;
+    // });
+    // console.log(this.totalAngularPackages);
     this.openSnackBar('Successfully added meeting attendee', 'add');
   }
 
@@ -83,9 +97,14 @@ export class AttendeeFormComponent implements OnInit {
 
   initDemo() {
     console.log('initDemo()');
-    this.attService.loadDemo().subscribe(data => {
-      this.test2 = data;
+    // this.attService.loadDemo().subscribe(data => {
+    //   this.test2 = data;
+    // });
+    const eventId = localStorage.getItem('event');
+    this.http.post(`${environment.seatingAPI}/event/${eventId}/demo`, null).subscribe(data => {
+      console.log(data);
     });
+    this.router.navigate(['/']);
   }
   addIndustry() {
     const i = document.getElementById('newIndustry') as HTMLInputElement;
@@ -314,4 +333,11 @@ function getIndustries() {
     'Wine Bar',
     'Winery'
   ];
+}
+
+export interface DBAttendee {
+  id: string;
+  name: string;
+  companyName: string;
+  industry: string;
 }

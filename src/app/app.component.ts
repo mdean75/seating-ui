@@ -4,6 +4,8 @@ import {Attendee} from './attendee';
 import {AttendeeService} from './attendee.service';
 import {Pair} from './pair';
 import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../environments/environment';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class AppComponent implements OnInit {
   count;
   router;
   test2;
-  constructor(attService: AttendeeService, router: Router) {
+  constructor(attService: AttendeeService, router: Router, public http: HttpClient) {
     this.attService = attService; this.router = router; this.router.navigate(['']);
   }
   public getRandomInteger(min, max) {
@@ -42,8 +44,12 @@ export class AppComponent implements OnInit {
 
   initDemo() {
     console.log('initDemo()');
-    this.attService.loadDemo().subscribe(data => {
-      this.test2 = data;
+    // this.attService.loadDemo().subscribe(data => {
+    //   this.test2 = data;
+    // });
+    const eventId = localStorage.getItem('event');
+    this.http.post(`${environment.seatingAPI}/${eventId}/demo`, null).subscribe(data => {
+      console.log(data);
     });
     this.router.navigate(['/']);
   }
