@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {MatButtonModule} from '@angular/material/button';
 import {DBAttendee} from '../add-attendee/add-attendee.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-start-event',
@@ -14,8 +15,9 @@ export class StartEventComponent implements OnInit {
   selected: Date | null;
   groupId = '61fdcb02ebbea31a74f59200';
   groupData: Group | null;
+  date: Date | null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     console.log(`testing: ${this.groupId}`);
   }
 
@@ -29,20 +31,17 @@ export class StartEventComponent implements OnInit {
   }
 
   handleClick() {
-    // let eventDate = `${this.selected}`;
-    console.log(`test click: group - ${this.groupId}, date - ${this.selected} | date: 'shortDate'`);
-    // const group: Group = {
-    //   id: this.groupId,
-    //   displayName: this.
-    // }
     const eventRequest: EventStartRequest = {
       groupId: this.groupId,
       group: this.groupData,
+      date: this.date,
     };
-    console.log(eventRequest);
+
     this.http.post<GroupEvent>(`${environment.seatingAPI}/event`, eventRequest).subscribe(response => {
       console.log(response);
       localStorage.setItem('event', response.id);
+      localStorage.setItem('eventDate', response.date.toString());
+      this.router.navigateByUrl('/attendee');
     });
   }
 
@@ -60,6 +59,7 @@ export interface GroupEvent {
 export interface EventStartRequest {
   groupId: string;
   group: Group;
+  date: Date;
 }
 
 export interface Group {

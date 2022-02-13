@@ -1,18 +1,34 @@
-<h2 class="mat-display-1 text-center mt-3">Morning Schmooze Attendees</h2>
-
-<div class="row justify-content-center">
-  <div *ngFor="let attendee of dbattendees" class="card-deck col-sm-4 col-md-4 col-lg-3">
-
-    <div class="card p-2 m-2">
-      <div class="card-body">
-        <h5 class="card-title">{{ attendee.name }} </h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{ attendee.industry }}</h6>
-        <p class="card-text">{{ attendee.companyName }}</p>
-        <hr>
-        <h4>Paired with:</h4>
-<!--        <h5 class="card-text">{{ attendee.pairedWithName }}</h5>-->
-      </div>
-    </div>
+  <h2 class="mat-display-1 text-center mt-3">Morning Schmooze Attendees</h2>
+  <div class="row" style="margin-left: 50px">
+    <button mat-raised-button color="warn" routerLink="/pairing">Generate Pairing</button>
   </div>
 
-</div>
+<!--  <div class="card p-2 m-2 customize-me">-->
+<!--    <div class="card-body">-->
+<!--      <h5 class="card-title">Title of card</h5>-->
+<!--      <h6 class="card-subtitle mb-2 text-muted">sub title</h6>-->
+<!--      <p class="card-text">car text</p>-->
+<!--      <hr>-->
+<!--      <h4>Paired with:</h4>-->
+<!--      <h5 class="card-text">more something</h5>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+  <div class="row justify-content-center">
+    <div *ngFor="let attendee of dbattendees" class="card-deck col-sm-4 col-md-4 col-lg-3">
+
+      <div class="card p-2 m-2">
+        <div class="card-body">
+          <h5 class="card-title">{{ attendee.name }} </h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ attendee.industry }}</h6>
+          <p class="card-text">{{ attendee.companyName }}</p>
+          <hr>
+          <h4>Paired with:</h4>
+          <h5 class="card-text">{{ attendee.pairedWithNames }}</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+

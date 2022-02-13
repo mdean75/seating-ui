@@ -32,8 +32,17 @@ export class ViewAttendeesComponent implements OnInit {
     this.http.get<GroupEvent>(`${environment.seatingAPI}/event/${eventId}`).subscribe(data => {
       console.log(data);
       const d = data.attendees as DBAttendee[];
+
       for (const value of d) {
+        const pairedWith = new Array<string>();
         // console.log(value);
+        if (value.pairedWith != null) {
+          for (const vv of value.pairedWith) {
+            pairedWith.push(vv.name);
+          }
+        }
+
+        value.pairedWithNames = pairedWith;
         this.dbattendees.push(value);
       }
     });
@@ -53,5 +62,10 @@ export class ViewAttendeesComponent implements OnInit {
     // });
   }
 
-
+  generatePairing() {
+    const eventId = localStorage.getItem('event');
+    this.http.post(`${environment.seatingAPI}/event/${eventId}/pairing`, []).subscribe(resp => {
+      console.log(resp);
+    });
+  }
 }

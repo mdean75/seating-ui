@@ -16,6 +16,7 @@ import {GroupEvent} from '../start-event/start-event.component';
 export class AddAttendeeComponent implements OnInit {
 
   eventId = '';
+  eventDate: Date;
 
   constructor(attservice: AttendeeService, router: Router, public sb: MatSnackBar, public http: HttpClient) {
     this.attService = attservice;
@@ -77,6 +78,7 @@ export class AddAttendeeComponent implements OnInit {
     });
     console.log(this.totalAngularPackages);
     this.eventId = localStorage.getItem('event');
+    this.eventDate = new Date(localStorage.getItem('eventDate'));
   }
 
   public getRandomInteger(min, max) {
@@ -97,14 +99,11 @@ export class AddAttendeeComponent implements OnInit {
 
   initDemo() {
     console.log('initDemo()');
-    // this.attService.loadDemo().subscribe(data => {
-    //   this.test2 = data;
-    // });
     const eventId = localStorage.getItem('event');
     this.http.post(`${environment.seatingAPI}/event/${eventId}/demo`, null).subscribe(data => {
       console.log(data);
     });
-    this.router.navigate(['/']);
+    this.router.navigateByUrl('/attendee-list');
   }
   addIndustry() {
     const i = document.getElementById('newIndustry') as HTMLInputElement;
@@ -340,4 +339,6 @@ export interface DBAttendee {
   name: string;
   companyName: string;
   industry: string;
+  pairedWith?: DBAttendee[];
+  pairedWithNames?: string[];
 }

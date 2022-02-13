@@ -18,29 +18,29 @@
   <span class="fill-remaining-space"></span>
 
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-    <button mat-button routerLink="/alist">Attendees</button>
+<!--    <button mat-button routerLink="/alist">Attendees</button>-->
     <button mat-button routerLink="/attendee-list">View Attendees</button>
-    <button mat-button routerLink="/pairing">Pairing List</button>
+    <button mat-button routerLink="/pairing">Generate Pairing</button>
     <button mat-button routerLink="/start">Create New Event</button>
-    <button mat-button routerLink="/attendee">New Attendee Entry</button>
+    <button mat-button routerLink="/attendee">Attendee Entry</button>
 <!--    <button mat-button (click)="initDemo()">Demo</button>-->
 
   </div>
-  <button mat-button >
-    <mat-icon (click)="initDemo()">delete_outline</mat-icon>
-  </button>
+<!--  <button mat-button >-->
+<!--    <mat-icon (click)="initDemo()">delete_outline</mat-icon>-->
+<!--  </button>-->
 
 </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="example-container">
     <mat-sidenav color="primary" #sidenav fxLayout="column" mode="side" opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
-        <button mat-button routerLink="/">Home</button>
-        <button mat-button routerLink="/alist">Attendees</button>
+        <button mat-button routerLink="/">Select Event</button>
+<!--        <button mat-button routerLink="/alist">Attendees</button>-->
         <button mat-button routerLink="/attendee-list">View Attendees</button>
         <button mat-button routerLink="/start">Create New Event</button>
-        <button mat-button routerLink="/attendee">New Attendee Entry</button>
+        <button mat-button routerLink="/attendee">Attendee Entry</button>
 
-        <button mat-button routerLink="/pairing">Pairing List</button>
+        <button mat-button routerLink="/pairing">Generate Pairing</button>
 <!--        <button mat-button (click)="initDemo()">Demo</button>-->
       </div>
     </mat-sidenav>

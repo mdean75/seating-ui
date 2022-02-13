@@ -12,16 +12,17 @@ import {MathquizComponent} from './mathquiz/mathquiz.component';
 import {StartEventComponent} from './start-event/start-event.component';
 import {AddAttendeeComponent} from './add-attendee/add-attendee.component';
 import {ViewAttendeesComponent} from './view-attendees/view-attendees.component';
+import {SelectEventComponent} from './select-event/select-event.component';
 
 
 const appRoutes: Routes = [
-  {path: '', component: AttendeeFormComponent, runGuardsAndResolvers: 'always'},
-  {path: 'attendee', component: AddAttendeeComponent, runGuardsAndResolvers: 'always'},
-  {path: 'alist', component: AttendeeListComponent},
-  {path: 'attendee-list', component: ViewAttendeesComponent},
-  {path: 'pairing', component: PairingComponent},
-  {path: 'reset', component: ResetAttendeesComponent},
-  {path: 'start', component: StartEventComponent}
+  {path: '', component: SelectEventComponent, runGuardsAndResolvers: 'always'}, // old attendee form
+  {path: 'attendee', component: AddAttendeeComponent, runGuardsAndResolvers: 'always'}, // attendee entry form
+  // {path: 'alist', component: AttendeeListComponent},
+  {path: 'attendee-list', component: ViewAttendeesComponent}, // view the list of attendees
+  {path: 'pairing', component: PairingComponent, runGuardsAndResolvers: 'always'}, // create pairing list
+  // {path: 'reset', component: ResetAttendeesComponent},
+  {path: 'start', component: StartEventComponent} // create new event
 ];
 @NgModule({
   declarations: [],
