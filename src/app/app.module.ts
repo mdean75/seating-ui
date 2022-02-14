@@ -21,7 +21,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { ResetAttendeesComponent } from './reset-attendees/reset-attendees.component';
 import {DataSharingService} from './data-sharing.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-import { MathquizComponent } from './mathquiz/mathquiz.component';
 import { StartEventComponent } from './start-event/start-event.component';
 import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
