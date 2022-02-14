@@ -8,7 +8,6 @@ import {AppComponent} from './app.component';
 import {PairingComponent} from './pairing/pairing.component';
 import {ResetAttendeesComponent} from './reset-attendees/reset-attendees.component';
 import {AttendeeFormComponent} from './attendee-form/attendee-form.component';
-import {MathquizComponent} from './mathquiz/mathquiz.component';
 import {StartEventComponent} from './start-event/start-event.component';
 import {AddAttendeeComponent} from './add-attendee/add-attendee.component';
 import {ViewAttendeesComponent} from './view-attendees/view-attendees.component';

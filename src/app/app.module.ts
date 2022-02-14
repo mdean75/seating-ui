@@ -41,7 +41,6 @@ import { MatSelectModule} from '@angular/material/select';
     AttendeeFormComponent,
     PairingComponent,
     ResetAttendeesComponent,
-    MathquizComponent,
     StartEventComponent,
     AddAttendeeComponent,
     ViewAttendeesComponent,
