@@ -1,7 +1,10 @@
 steps:
   # Build the container image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/silken-gadget-247900/seating-ui', '.']
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - --destination=gcr.io/$PROJECT_ID/seating-ui
+      - --cache=true
+      - --cache-ttl=96h
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/silken-gadget-247900/seating-ui']
