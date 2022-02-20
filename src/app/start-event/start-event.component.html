@@ -1,0 +1,34 @@
+<!--Card content-->
+<div class="container mt-5">
+  <mdb-card>
+    <mdb-card-header class="info-color white-text text-center py-4">
+      <h1>
+        <strong>Create New Networking Event</strong>
+      </h1>
+    </mdb-card-header>
+    <mdb-card-body class="px-lg-5">
+
+<!--      <p>Selected date: {{selected | date:'fullDate'}}</p>-->
+
+<!--      <mat-form-field class="example-form-field" appearance="fill">-->
+<!--        <mat-label>Clearable input</mat-label>-->
+<!--        <input matInput type="text" [ngModel]="selected | date:'fullDate'">-->
+<!--&lt;!&ndash;        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" >&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-icon>close</mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;        </button>&ndash;&gt;-->
+<!--      </mat-form-field>-->
+
+
+
+      <mat-card class="demo-inline-calendar-card">
+              <mat-calendar [(selected)]="date"></mat-calendar>
+            </mat-card>
+      <button mat-raised-button color="primary" (click)="handleClick()">Create Event</button>
+
+<!--      <button class="btn btn-raised btn-dark" (click)="initDemo()">Demo</button>-->
+<!--      <button class="btn btn-raised btn-warning float-right" (click)="showDiv()">Add Industry</button>-->
+
+
+    </mdb-card-body>
+  </mdb-card>
+</div>

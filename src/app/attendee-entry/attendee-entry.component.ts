@@ -9,9 +9,13 @@ export class AttendeeEntryComponent implements OnInit {
   att: string;
   industries = this.getIndustries();
   isActiveAddIndustry = false;
-  constructor() { }
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+
   }
 
   showDiv() {

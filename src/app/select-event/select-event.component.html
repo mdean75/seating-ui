@@ -1,0 +1,32 @@
+<!--Card content-->
+<div class="container mt-5">
+  <mdb-card>
+    <mdb-card-header class="info-color white-text text-center py-4">
+      <h1>
+        <strong>Select Networking Event</strong>
+      </h1>
+    </mdb-card-header>
+    <mdb-card-body class="px-lg-5">
+
+<!--      <mat-card class="demo-inline-calendar-card">-->
+        <mat-form-field appearance="fill">
+          <mat-label>Select Event Date</mat-label>
+          <mat-select [(value)]="selectedEvent">
+            <mat-option *ngFor="let event of events" [value]="event">
+              {{event.date | date: 'fullDate'}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+<!--      </mat-card>-->
+      <div>
+        <button mat-raised-button color="primary" (click)="saveEvent()">Set Event</button>
+      </div>
+
+
+      <!--      <button class="btn btn-raised btn-dark" (click)="initDemo()">Demo</button>-->
+      <!--      <button class="btn btn-raised btn-warning float-right" (click)="showDiv()">Add Industry</button>-->
+
+
+    </mdb-card-body>
+  </mdb-card>
+</div>

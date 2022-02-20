@@ -21,7 +21,16 @@ import {HttpClientModule} from '@angular/common/http';
 import { ResetAttendeesComponent } from './reset-attendees/reset-attendees.component';
 import {DataSharingService} from './data-sharing.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { StartEventComponent } from './start-event/start-event.component';
+import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule} from '@angular/material/core';
+import { MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import { AddAttendeeComponent } from './add-attendee/add-attendee.component';
+import { ViewAttendeesComponent } from './view-attendees/view-attendees.component';
+import { SelectEventComponent } from './select-event/select-event.component';
+import { MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -30,7 +39,11 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     AttendeeListComponent,
     AttendeeFormComponent,
     PairingComponent,
-    ResetAttendeesComponent
+    ResetAttendeesComponent,
+    StartEventComponent,
+    AddAttendeeComponent,
+    ViewAttendeesComponent,
+    SelectEventComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +58,13 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatCardModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [AttendeeService, DataSharingService],
   bootstrap: [AppComponent]

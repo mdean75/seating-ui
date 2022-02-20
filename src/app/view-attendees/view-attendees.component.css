@@ -1,0 +1,17 @@
+.customize-me {
+  /*background-color: aqua;*/
+  transition: all 1s;
+}
+
+.customize-me:hover {
+  background-color: blueviolet;
+  /*transform: scale(1.2);*/
+  /*transform: scaleY(1.);*/
+
+  height: 50vh;
+  /*width: 100%;*/
+  /*z-index: 5;*/
+}
+/*.customize-me:active {*/
+/*  background-color: chocolate;*/
+/*}*/
