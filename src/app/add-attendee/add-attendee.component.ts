@@ -342,4 +342,5 @@ export interface DBAttendee {
   industry: string;
   pairedWith?: DBAttendee[];
   pairedWithNames?: string[];
+  expanded?: boolean;
 }

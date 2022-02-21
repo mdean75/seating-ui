@@ -45,3 +45,15 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
+
+.button-spacing {
+  margin-bottom: 5px;
+}
+
+.generate-button {
+  float: right;
+}
+
+.expansion-button {
+  background-color: lightgreen;
+}
