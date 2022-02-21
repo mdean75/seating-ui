@@ -1,0 +1,86 @@
+<table mat-table matSort
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element.expanded ? 'expanded' : 'collapsed'">
+<!--        <div class="example-element-diagram">-->
+        <div style="font-weight: lighter">
+<!--          <div class="example-element-position"> {{element.position}} </div>-->
+
+<!--          <div class="example-element-name"> {{element.pairedWithNames}} </div>-->
+          <li *ngFor="let i of element.pairedWithNames">{{i}}</li>
+<!--          <div class="example-element-weight"> {{element.companyName}} </div>-->
+<!--          <div class="example-element-symbol"> {{element.industry}} </div>-->
+        </div>
+<!--        <div class="example-element-description">-->
+<!--          {{element.description}}-->
+<!--          <span class="example-element-description-attribution"> -- Wikipedia </span>-->
+<!--        </div>-->
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+<!--  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"-->
+<!--      class="example-element-row"-->
+<!--      [class.example-expanded-row]="expandedElement === element"-->
+<!--      (click)="expandedElement = expandedElement === element ? null : element">-->
+<!--  </tr>-->
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="element.expanded"
+      (click)="toggleRow(element)">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+               showFirstLastButtons
+               aria-label="Select page of periodic elements">
+</mat-paginator>
+
+
+<!--<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">-->
+
+<!--  &lt;!&ndash;- Note that these columns can be defined in any order.-->
+<!--        The actual rendered columns are set as a property on the row definition" &ndash;&gt;-->
+
+<!--  &lt;!&ndash; Position Column &ndash;&gt;-->
+<!--  <ng-container matColumnDef="name">-->
+<!--    <th mat-header-cell *matHeaderCellDef> Name </th>-->
+<!--    <td mat-cell *matCellDef="let element"> {{element.name}} </td>-->
+<!--  </ng-container>-->
+
+<!--  &lt;!&ndash; Name Column &ndash;&gt;-->
+<!--  <ng-container matColumnDef="companyName">-->
+<!--    <th mat-header-cell *matHeaderCellDef> Company Name </th>-->
+<!--    <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>-->
+<!--  </ng-container>-->
+
+<!--  &lt;!&ndash; Weight Column &ndash;&gt;-->
+<!--  <ng-container matColumnDef="industry">-->
+<!--    <th mat-header-cell *matHeaderCellDef> Industry </th>-->
+<!--    <td mat-cell *matCellDef="let element"> {{element.industry}} </td>-->
+<!--  </ng-container>-->
+
+<!--  &lt;!&ndash; Symbol Column &ndash;&gt;-->
+<!--&lt;!&ndash;  <ng-container matColumnDef="symbol">&ndash;&gt;-->
+<!--&lt;!&ndash;    <th mat-header-cell *matHeaderCellDef> Symbol </th>&ndash;&gt;-->
+<!--&lt;!&ndash;    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>&ndash;&gt;-->
+<!--&lt;!&ndash;  </ng-container>&ndash;&gt;-->
+
+<!--  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>-->
+<!--  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>-->
+<!--</table>-->
+<!--<mat-paginator [pageSizeOptions]="[5, 10, 20]"-->
+<!--               showFirstLastButtons-->
+<!--               aria-label="Select page of periodic elements">-->
+<!--</mat-paginator>-->
+
