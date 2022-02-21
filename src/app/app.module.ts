@@ -31,6 +31,10 @@ import { AddAttendeeComponent } from './add-attendee/add-attendee.component';
 import { ViewAttendeesComponent } from './view-attendees/view-attendees.component';
 import { SelectEventComponent } from './select-event/select-event.component';
 import { MatSelectModule} from '@angular/material/select';
+import { AttendeeTableComponent } from './attendee-table/attendee-table.component';
+import { MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,8 @@ import { MatSelectModule} from '@angular/material/select';
     StartEventComponent,
     AddAttendeeComponent,
     ViewAttendeesComponent,
-    SelectEventComponent
+    SelectEventComponent,
+    AttendeeTableComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +70,9 @@ import { MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatInputModule,
     MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [AttendeeService, DataSharingService],
   bootstrap: [AppComponent]
