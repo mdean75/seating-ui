@@ -105,6 +105,7 @@ export class AddAttendeeComponent implements OnInit {
     });
     this.router.navigateByUrl('/attendee-list');
   }
+
   addIndustry() {
     const i = document.getElementById('newIndustry') as HTMLInputElement;
     const list = document.getElementById('industry') as HTMLSelectElement;
@@ -341,4 +342,5 @@ export interface DBAttendee {
   industry: string;
   pairedWith?: DBAttendee[];
   pairedWithNames?: string[];
+  expanded?: boolean;
 }
