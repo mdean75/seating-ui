@@ -10,7 +10,7 @@
 
       <button mat-raised-button color="" (click)="manageAllRows(true)" class="button-spacing expansion-button" >Expand All</button>
       <button mat-raised-button color="" (click)="manageAllRows(false)" class="button-spacing expansion-button" >Collpase All</button>
-      <button mat-raised-button color="warn" routerLink="/pairing" class="button-spacing generate-button">Generate Pairing</button>
+      <button mat-raised-button color="warn" (click)="test()" class="button-spacing generate-button">Generate Pairing</button>
 
       <table mat-table matSort
              [dataSource]="dataSource" multiTemplateDataRows
@@ -78,7 +78,9 @@
             [class.example-expanded-row]="element.expanded"
             (click)="toggleRow(element)">
         </tr>
-        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"
+            class="example-detail-row"
+            (click)="selectRow(row)"></tr>
       </table>
       <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                      showFirstLastButtons

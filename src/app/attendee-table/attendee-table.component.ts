@@ -10,6 +10,8 @@ import {merge} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
+import {PairingService} from '../pairing.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-attendee-table',
@@ -36,7 +38,7 @@ export class AttendeeTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private pairingService: PairingService, private router: Router) { }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -85,11 +87,13 @@ export class AttendeeTableComponent implements AfterViewInit {
           this.dbattendees.push(attendee);
         }
         this.dataSource.data = this.dbattendees;
+        this.selection.select(...this.dataSource.data);
       });
   }
 
   toggleRow(element: { expanded: boolean; }) {
     element.expanded = !element.expanded;
+    console.log(element);
   }
 
   manageAllRows(flag: boolean) {
@@ -121,5 +125,14 @@ export class AttendeeTableComponent implements AfterViewInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id}`;
+  }
+
+  selectRow(row: DBAttendee) {
+    console.log(row);
+  }
+
+  test() {
+    this.pairingService.setAttendees(this.selection.selected);
+    this.router.navigateByUrl('pairing');
   }
 }
