@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AttendeeService} from '../attendee.service';
-import {Pair} from '../pair';
 import {DataSharingService} from '../data-sharing.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {DBAttendee} from '../add-attendee/add-attendee.component';
 import {NavigationEnd, Router} from '@angular/router';
+import {PairingService} from '../pairing.service';
 
 @Component({
   selector: 'app-pairing',
@@ -19,7 +19,12 @@ export class PairingComponent implements OnInit, OnDestroy {
   pairs = new Array<NewPair>();
   attService;
   dataSharing;
-  constructor(attService: AttendeeService, dataSharing: DataSharingService, public http: HttpClient, private router: Router) {
+  constructor(attService: AttendeeService,
+              dataSharing: DataSharingService,
+              public http: HttpClient,
+              private router: Router,
+              private pairingService: PairingService) {
+
     this.attService = attService;
     this.dataSharing  = dataSharing;
     this.navigationSubscription = this.router.events.subscribe((e: any ) => {
@@ -50,7 +55,8 @@ export class PairingComponent implements OnInit, OnDestroy {
 
   generateList() {
     const eventId = localStorage.getItem('event');
-    this.http.post<NewPair[]>(`${environment.seatingAPI}/event/${eventId}/pairing`, []).subscribe(resp => {
+    this.http.post<NewPair[]>(`${environment.seatingAPI}/event/${eventId}/pairing`, this.pairingService.getSelectedAttendees())
+      .subscribe(resp => {
       const d = resp as NewPair[];
       for (const value of d) {
         // console.log(value);

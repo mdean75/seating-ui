@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  seatingAPI: 'http://192.168.1.211:3000'
+  // seatingAPI: 'http://192.168.1.211:3000'
+  seatingAPI: 'http://localhost:3000'
 };
 
 /*
